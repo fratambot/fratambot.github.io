@@ -1,8 +1,8 @@
 # site settings
-title: DATA + SCIENCE
+title: 101010
 subtitle: by Francesco Tamborra
 email: francescotamborra@gmail.com
-description: A kind of blog about data and science.
+description: A kind of blog about data, science, society, <br /> life, the universe and everything
 baseurl: #"/forty-jekyll-theme" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author: Francesco Tamborra
