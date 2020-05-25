@@ -23,4 +23,17 @@
 			background-color: transparent;
 			border-bottom: solid 1px _palette(border);
 		}
+		.white-post {
+			background-color: white;
+			color: black;
+			strong, b {
+				color: black;
+			}
+			h1 {
+				color: black;
+				&:after {
+					background-color: black;
+				}
+			}
+		}
 	}

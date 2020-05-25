@@ -11,6 +11,7 @@
     </span>
     <header class="major">
       <h3><a href="{{ tile.url  | relative_url }}" class="link">{{ tile.title }}</a></h3>
+      {% if tile.date %}<p>{{ tile.date | date: "%-d %B %Y" }}</p>{% endif %}
       <p>{{ tile.description }}</p>
     </header>
   </article>
