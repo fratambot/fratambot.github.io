@@ -29,8 +29,8 @@
 			strong, b {
 				color: black;
 			}
-			h1 {
-				color: black;
+			h1, h2, h3 {
+				color: _palette(bg);
 				&:after {
 					background-color: black;
 				}
