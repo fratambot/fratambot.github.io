@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Artificial Neurons | 101010</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000//" class="logo"><strong>101010</strong> <span>by Francesco Tamborra</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000//">Home</a></li>
+	    	
+		
+		    
+		
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/all_posts.html">All posts</a></li>
+		    
+		
+		    
+		
+	</ul>
+	<!-- <ul class="actions vertical">
+		<li><a href="#" class="button special fit">Get Started</a></li>
+		<li><a href="#" class="button fit">Log In</a></li>
+	</ul> -->
+</nav>
+
+
+
+<!-- Main -->
+<div id="main" class="alt">
+
+<!-- One -->
+<section id="one" class="white-post">
+	<div class="inner">
+		<header class="major">
+			<h1>Artificial Neurons</h1>
+      <p>19 October 2020</p>
+		</header>
+		<span class="image main"><img src="/assets/images/post_neurons/neuron_cropped.png" alt="" /></span>
+    <p>If you are not living under a rock you might have heard about <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">artificial neural networks</a> (ANNs).</p>
+
+<p>This post is the first of a series in which I will introduce to the basic maths and concepts of ANNs and machine learning, possibly reaching the more advanced topics of this fascinating discipline while keeping things simple and clear.</p>
+
+<p>The starting episode is therefore devoted to the building blocks of any neural network: <strong>the neurons</strong>.</p>
+
+<h3> Perceptrons </h3>
+
+<p>The first type of artificial neuron, called <strong><em>perceptron</em></strong> was developed in the 60s by the scientist <a href="https://books.google.ca/books/about/Principles_of_neurodynamics.html?id=7FhRAAAAMAAJ&amp;hl=en">Frank Rosenblatt</a> inspired by earlier work by Warren McCulloch and Walter Pitts.
+Nowadays it’s more common to use other models of artificial neurons such as the <em>sigmoid neurons</em> whose properties will be described later once we understand how perceptrons works.</p>
+
+<p>Perceptrons are quite simple objects which takes <strong>several binary inputs</strong>, $x_1$, $x_2$, …, and produce <strong>one binary output</strong>, $o$:</p>
+
+<p align="center">
+  <img width="400px" src="/assets/images/post_neurons/neuron001_cropped.png" />
+  <figcaption class="caption-center"> Fig.1 </figcaption>
+</p>
+
+<p>The simple approach proposed by Rosenblatt to compute the output was by introducing <em>weights</em>, $w_1$, $w_2$, …, real numbers expressing the importance of the respective inputs to the output.
+The neuron’s output, 0 or 1, is determined by whether the weighted sum $\sum_{j} w_j x_j$  is less than or greater than some threshold value which, just like the weights, is another real number.</p>
+
+<p>To put it in a more formal way:</p>
+
+\[\begin{equation}
+    o =
+    \begin{cases}
+      0 &amp; \text{if} \quad \sum_{j} w_j x_j \quad \le \quad \text{threshold}\\
+      1 &amp; \text{if} \quad \sum_{j} w_j x_j \quad \gt \quad \text{threshold}
+    \end{cases}
+  \end{equation}\]
+
+<p>And that is basically everything we have to say from a mathematical point of view about perceptrons !
+<br /></p>
+
+<p>We can be a little bit more fancy and simplify the notation by rewriting the weighted sum as a <a href="https://en.wikipedia.org/wiki/Dot_product#Algebraic_definition">dot product</a>, $\sum_{j} w_j x_j = w \cdot x$ where $w$ and $x$ are vectors whose components are the weights and inputs, respectively.
+Also we can move the threshold on the other side of the inequality and replace it by what’s known as the perceptron’s <strong><em>bias</em></strong>, $b \equiv - \text{threshold}$.</p>
+
+<p>Eq (1) becomes:</p>
+
+\[\begin{equation}
+    o =
+    \begin{cases}
+      0 &amp; \text{if} \quad w \cdot x  + b \le 0\\
+      1 &amp; \text{if} \quad w \cdot x  + b \gt 0
+    \end{cases}
+  \end{equation}\]
+
+<p>You can think of the bias as a measure of how easy it is to get the perceptron to output a 1. Or, to put it in more biological terms, the bias is a measure of how easy it is to get the perceptron to <em>fire</em>. A perceptron with a really big bias would easily output a 1. On the other hand, if the bias is very negative, then it would be difficult for the perceptron to output a 1. Obviously, introducing the bias is only a small change in how we describe perceptrons, but we’ll see later that it leads to further notational simplifications.</p>
+
+<p>To make a trivial example, let us consider the perceptron in Fig.1 with 3 inputs.
+The output for a 3-inputs perceptron can be calculated using Eq.2, explicitly:</p>
+
+\[\begin{equation}
+    o =
+    \begin{cases}
+      0 &amp; \text{if} \quad x_1 * w_1 + x_2 * w_2 + x_3 * w_3 + b \le 0\\
+      1 &amp; \text{if} \quad x_1 * w_1 + x_2 * w_2 + x_3 * w_3 + b \gt 0
+    \end{cases}
+  \end{equation}\]
+
+<p>where $ * $ is the classic multiplication operator.</p>
+
+<p>Let’s say that the output is whether you go ($o = 1$) or not ($o = 0$) to a music festival based on:</p>
+
+<ol>
+  <li>your favourite band is playing ($x_1 = 1$) or not ($x_1 = 0$)</li>
+  <li>your friends are coming ($x_2 = 1$) or not ($x_2 = 0$)</li>
+  <li>it is sunny ($x_3 = 1$) or not ($x_3 = 0$)</li>
+</ol>
+
+<p>If the most important thing for you is the band playing followed by your friends coming while you don’t care about the weather, the perceptron which best model this kind of decision-making would have for example $w_1 = 6$, $w_2 = 4$ and $w_3 = 0$. Finally, let’s say that this perceptron has a threshold of 5 (bias, $b = -5$).
+For this choice that means that you will go to the concert ($o = 1$) whenever your favourite band is playing and it actually doesn’t matter if your friends are coming or if it is sunny (just use Eq. 3 to check it).</p>
+
+<p>By varying the <em>weights</em> and <em>bias</em> we can get different models of decision-making. Let’s say for example that the bias is $b = -4$ (i.e. you’re more inclined to go to the the concert, in general): in this case you will go to the concert if your favourite band is playing <em>or</em> if your friend are coming (or both), regardless of the atmospheric conditions.</p>
+
+<p>Perceptrons are therefore a tool for decision making but they can also be used to compute basic logic functions such as AND, OR and <a href="https://en.wikipedia.org/wiki/NAND_logic">NAND</a>.
+For example, let’s suppose we have a perceptron with two inputs ($x_1$ and $x_2$), each with weight −2 ($w_1 = w_2 = -2$), and an overall bias of 3 ($b = 3$).
+Using Eq. 3 we can easily verify that an input 00 ($x_1 = x_2 = 0$) will produce an output $o = 1$. The same happens for an input 01 and 10 while for an input 11 the output will be 0. This perceptron therefore implements a NAND gate.
+Those familiar with Boolean functions and logic have already grasped the importance of it, being the NAND gate <strong><em>functionally complete</em></strong>, i.e. any logical function can be obtained using only NAND gates.
+For example we can use NAND gates to build a circuit to add 2 bits $x_1$ and $x_2$, as shown in Fig.2</p>
+
+<p align="center">
+  <img width="600px" src="/assets/images/post_neurons/Half_adder_NAND.png" />
+  <figcaption class="caption-center"> Fig.2: Half adder circuit using NAND gates. <i></i></figcaption>
+</p>
+
+<p>where the carry bit is set to 1 when both $x_1$ and $x_2$ are equal to 1. The truth table for the half adder is shown in Fig. 3</p>
+
+<p align="center">
+  <img width="400px" src="/assets/images/post_neurons/Half_adder_truth.png" />
+  <figcaption class="caption-center"> Fig.3: Truth table for the half adder circuit. <i></i></figcaption>
+</p>
+
+<p>The corresponding network using the the “NAND-perceptron” described above will look like the one showed in Fig.4</p>
+
+<p align="center">
+  <img width="600px" src="/assets/images/post_neurons/Half_adder_network_1.png" />
+  <figcaption class="caption-center"> Fig.4: half adder network. <i></i></figcaption>
+</p>
+
+<p>You might have noticed that the leftmost perceptron’s output is used twice as an input for the bottom-right perceptron. In principle nothing forbid this kind of behaviour but if we don’t like it we could just merge the two lines in a single connection with weight -4 to obtain the same result (it’s up to you to verify it).
+Also, up to now we showed the inputs as variables floating to the left of the network but conventionally they are represented as perceptrons in what is called the <strong><em>input layer</em></strong>. Input neurons have one output but no input. In fact they are not really neurons but this representation makes neural networks look prettier.
+The nicer version of our half adder network is shown in Fig. 5</p>
+
+<p align="center">
+  <img width="600px" src="/assets/images/post_neurons/Half_adder_network_2.png" />
+  <figcaption class="caption-center"> Fig.5: pretty half adder network. <i></i></figcaption>
+</p>
+
+<p>where all perceptrons have a weights $w_1 = w_2 = -2$ and bias $b=3$ with the exception of the bottom right perceptron which has an explicitly indicated weight of -4.
+You may have noticed also that in the network depicted in Fig. 5 we have some layers of neurons in between the input and the output. These “in-between” layers are conventionally referred as <strong><em>hidden layers</em></strong>.
+Neurons composing the hidden layers are no different from any other neuron and the term basically means “not an input nor an output”.
+While the design of the input and output layers of a neural network is often straightforward, there can be quite an art to the design of the hidden layers. In particular, it’s not possible to sum up the design process for the hidden layers with a few simple rules of thumb. Instead, neural networks researchers have developed many design heuristics for the hidden layers, which help people get the behaviour they want out of their nets. For example, such heuristics can be used to help determine how to trade off the number of hidden layers against the time required to train the network.
+As a rule of thumb one may consider to add hidden layers to introduce complexity because what they do, mathematically speaking, is performing nonlinear transformations of the inputs entered into the network.</p>
+
+<p>A conventional architecture for an ANN looks like the one showed in Fig. 6.</p>
+
+<p align="center">
+  <img width="600px" src="/assets/images/post_neurons/2hiddenANN.png" />
+  <figcaption class="caption-center"> Fig.6: A neural network with 3 inputs, 1 output and 2 hidden layers. <i></i></figcaption>
+</p>
+
+<p>Because NAND gates are universal for computation, the adder example demonstrate that perceptrons are universal too. This is both reassuring and disappointing: are perceptrons just another type of NAND gates ?
+Of course not and they are much more than this because it turns out that we can devise learning algorithms which can automatically tune the weights and biases of a network of artificial neurons. This tuning happens in response to external stimuli, without direct intervention by a programmer. These learning algorithms enable us to use artificial neurons in a way which is radically different to conventional logic gates. Instead of explicitly laying out a circuit of NAND and other gates, our neural networks can simply learn to solve problems, sometimes problems where it would be extremely difficult to directly design a conventional circuit.</p>
+
+<p>Learning algorithms and how ANNs actually work will be the topic of future posts of this series.
+However, in order to work, these algorithms need to tunes the parameters of a different kind of neurons capable of accepting as inputs and producing as output any number between 0 and 1 and not just 0 or 1.</p>
+
+<h3> Sigmoids </h3>
+
+<p>Even without any detailed explication on how learning algorithms operate, a problem instantly arise with perceptrons. If these algorithms can effectively fine tune the weights and biases of the artificial neurons, one might expect that a small change will lead to a small change in the final output.
+With perceptrons that’s not the case because the output, which is binary, will be 0 until it becomes 1, and viceversa.
+As anticipated at the beginning, perceptrons are not used nowadays in neural network and the reason is the one just mentioned: a small changes in the weights and bias can lead to a completely different output.
+For this reason other neurons are used in ANNs such as the <strong><em>sigmoid neuron</em></strong>.</p>
+
+<p>Just like a perceptron, the sigmoid neuron has inputs, $x_1$, $x_2$,… But instead of being just 0 or 1, these inputs can take on any values between 0 and 1. So, for instance, 0.638… is a valid input for a sigmoid neuron. Also, just like a perceptron, the sigmoid neuron has weights for each input, $w_1$, $w_2$,…, and an overall bias, $b$, but the output is not 0 or 1.
+Instead, it’s $\sigma(w \cdot x + b)$, where $\sigma$ is the <a href="https://en.wikipedia.org/wiki/Sigmoid_function"><strong><em>sigmoid function</em></strong></a> defined as:</p>
+
+\[\begin{equation}
+    \sigma(z) \quad \equiv \quad \frac{1}{1 + e^{-z}}
+  \end{equation}\]
+
+<p>where $z = w \cdot x + b$.</p>
+
+<p>For a sigmoid neuron with $x_1$, $x_2$,…, weigths $w_1$, $w_2$,…, and bias $b$ the output can be explicitly written as:</p>
+
+\[\begin{equation}
+    o \quad = \quad \frac{1}{1+exp(-\sum_{j} w_j x_j -b)}
+  \end{equation}\]
+
+<p>It seems that sigmoid neurons are a completely different beast with respect to perceptrons but they are not, actually. In order to understand the similarities and differences between the two it suffices to take a look at the shape of the sigmoid function:</p>
+
+<p align="center">
+  <img width="500px" src="/assets/images/post_neurons/sigmoid_function.png" />
+  <figcaption class="caption-center"> Fig.6: sigmoid function <i></i></figcaption>
+</p>
+
+<p>We have seen before that when the bias, and therefore $z$, is large and positive, a perceptron will fire ($o = 1$) while if $z$ is very negative the perceptron’s output will be 0. If you look at Fig.6 you will notice that for these extreme cases it behaves the same: the sigmoid function “squeezes” very large negative numbers to 0 and very large positive number to 1. The main and most important difference is that it’s able to produce values between 0 and 1 when the absolute value of $z$ is not very large.</p>
+
+<p>As a further comparison, it’s like if the perceptron was described rather by the <a href="https://en.wikipedia.org/wiki/Heaviside_step_function">step function</a>, shown in Fig.7 below (with the exception that when $z=0$ the perceptron outputs 0 while the step function outputs 1).</p>
+
+<p align="center">
+  <img width="500px" src="/assets/images/post_neurons/step_function.png" />
+  <figcaption class="caption-center"> Fig.7: Heaviside step function <i></i></figcaption>
+</p>
+
+<p>The sigmoid neuron can be considered as a smoothed perceptron and it is actualy the smoothness of the sigmoid function which plays a crucial role rather than it’s detailed form.
+The smoothness of $\sigma$ means that small changes $\Delta w_j$ in the weights and $\Delta b$ in the bias will produce a small change $\Delta output$ in the output from the neuron. In a more mathematical and formal way:</p>
+
+\[\begin{equation}
+    \Delta output \quad = \quad \sum_{j} \frac{\partial output}{ \partial w_j} \Delta w_j + \frac{\partial output}{\partial b} \Delta b
+  \end{equation}\]
+
+<p>where the sum is over all weights, $w_j$, and $\partial output / \partial w_j$ and $\partial output / \partial b$ denote partial derivatives of the output with respect to $w_j$ and $b$, respectively.
+Even if you’re not familiar with partial derivatives and Eq.6 looks really complicated, the only thing that it means is that $\Delta output$ is a <strong><em>linear function</em></strong> of the changes $\Delta w_j$ and $\Delta b$ in the weights and bias, which is really good news !</p>
+
+<p>So, if it’s the shape of $\sigma$ which really matters and not its exact form, why choosing this function rather than another function (such as, for example, the <a href="https://en.wikipedia.org/wiki/Atan2">arctangent</a>) ?
+In fact, we will see that we can chose other functions and it is worth mentioning that these function “modulating” an artificial neuron’s output are called <strong>activation functions</strong>. The “art” of choosing the more appropriate activation function, however, will be the topic for another article.
+In here, and in other simple examples you might find, the sigmoid function is used very often and that is, mainly, because exponential have very lovely properties when differentiated and the algebra when calculating the pertial derivatives before (Eq.6) is much easier with $\sigma$.</p>
+
+<p>As a final (and trivial) note, how to interpret the real valued output of a sigmoid neuron ? If I want to classify an image as containing a cat or not, what $o = 0.234$ means ? Is it a cat or not ? One might establish a convention that if the value is below, let’s say 0.5 the answer is “no” while if it is above, it will be a “yes”. Otherwise, more interestingly, one can interpret the value as a probability value and therefore $o = 0.98$ will express more confidence that the image contains a cat with respect to an output $o = 0.58$.</p>
+
+	</div>
+</section>
+
+</div>
+
+    <!-- Contact -->
+<section id="contact">
+	<div class="inner">
+		<div class="contact-method">
+			<span class="icon alt fa-envelope"></span>
+			<!-- <h3>Email</h3> -->
+			<a>francescotamborra AT gmail DOT com</a>
+		</div>
+		<!-- <section>
+			<form action="https://formspree.io/francescotamborra AT gmail DOT com" method="POST">
+				<div class="field half first">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name" />
+				</div>
+				<div class="field half">
+					<label for="email">Email</label>
+					<input type="text" name="_replyto" id="email" />
+				</div>
+				<div class="field">
+					<label for="message">Message</label>
+					<textarea name="message" id="message" rows="6"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" class="special" /></li>
+					<li><input type="reset" value="Clear" /></li>
+				</ul>
+			</form>
+		</section>
+		<section class="split">
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-envelope"></span>
+					<h3>Email</h3>
+					<a href="#">francescotamborra AT gmail DOT com</a>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-phone"></span>
+					<h3>Phone</h3>
+					<span></span>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-home"></span>
+					<h3>Address</h3>
+					<span>
+					
+					
+					
+					
+					
+					</span>
+				</div>
+			</section>
+		</section> -->
+	</div>
+</section>
+
+<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				
+				
+				
+				
+				
+				
+				
+				
+				<li><a href="https://github.com/FrancescoTamborra" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+				
+				
+				
+				<li><a href="https://www.linkedin.com/in/francescotamborra/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; 101010 by Francesco Tamborra</li>
+				<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+				<li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li>
+
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+	<script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+	<script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+	<script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+	<script src="http://localhost:4000/assets/js/skel.min.js"></script>
+	<script src="http://localhost:4000/assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="http://localhost:4000/assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [['$','$'], ['\\(','\\)']],
+processEscapes: true},
+jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+TeX: {
+extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+equationNumbers: {
+autoNumber: "AMS"
+}
+}
+});
+</script>
