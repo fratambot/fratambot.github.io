@@ -1,4 +1,8 @@
-I"ÿ?<p>If you are not living under a rock you might have heard about <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">artificial neural networks</a> (ANNs).</p>
+I"Œ@<!-- <script type="text/javascript" async
+ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+
+<p>If you are not living under a rock you might have heard about <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">artificial neural networks</a> (ANNs).</p>
 
 <p>This post is the first of a series in which I will introduce to the basic maths and concepts of ANNs and machine learning, possibly reaching the more advanced topics of this fascinating discipline while keeping things simple and clear.</p>
 
@@ -9,7 +13,7 @@
 <p>The first type of artificial neuron, called <strong><em>perceptron</em></strong> was developed in the 60s by the scientist <a href="https://books.google.ca/books/about/Principles_of_neurodynamics.html?id=7FhRAAAAMAAJ&amp;hl=en">Frank Rosenblatt</a> inspired by earlier work by Warren McCulloch and Walter Pitts.
 Nowadays itâ€™s more common to use other models of artificial neurons such as the <em>sigmoid neurons</em> whose properties will be described later once we understand how perceptrons works.</p>
 
-<p>Perceptrons are quite simple objects which takes <strong>several binary inputs</strong>, $x_1$, $x_2$, â€¦, and produce <strong>one binary output</strong>, $o$:</p>
+<p>Perceptrons are quite simple objects which takes <strong>several binary inputs</strong>, $x_1$, $x_2$, â€¦, and produce <strong>one binary output</strong>, \(o\):</p>
 
 <p align="center">
   <img width="400px" src="/assets/images/post_neurons/neuron001_cropped.png" />
