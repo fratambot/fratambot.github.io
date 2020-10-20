@@ -1,6 +1,5 @@
 # 101010
 
-A KIND OF BLOG ABOUT DATA, SCIENCE, SOCIETY,
-LIFE, THE UNIVERSE AND EVERYTHING
+A kind of blog about data, science, society, life, the universe and everything.
 
-Repository [Jekyll logo](https://github.com/jekyll/brand) icon licensed under a [Creative Commons Attribution 4.0 International License](http://choosealicense.com/licenses/cc-by-4.0/).
+Made with ❤ using Jekyll
