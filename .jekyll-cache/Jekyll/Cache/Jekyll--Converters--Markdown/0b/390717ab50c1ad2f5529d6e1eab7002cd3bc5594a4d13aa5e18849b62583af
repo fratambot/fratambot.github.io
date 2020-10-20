@@ -1,8 +1,4 @@
-I"Œ@<!-- <script type="text/javascript" async
- src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script> -->
-
-<p>If you are not living under a rock you might have heard about <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">artificial neural networks</a> (ANNs).</p>
+I"@<p>If you are not living under a rock you might have heard about <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">artificial neural networks</a> (ANNs).</p>
 
 <p>This post is the first of a series in which I will introduce to the basic maths and concepts of ANNs and machine learning, possibly reaching the more advanced topics of this fascinating discipline while keeping things simple and clear.</p>
 
