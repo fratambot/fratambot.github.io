@@ -41,6 +41,7 @@
 		text-align: center;
 	}
 
-	.mjx-chtml {
-		overflow-x: scroll;
+	.scrollable {
+	  overflow-x: scroll;
+		overflow-y: hidden;
 	}

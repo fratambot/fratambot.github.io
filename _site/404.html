@@ -15,13 +15,18 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 	<script>
-		MathJax = {
+		MathJax = { // use single dollar for inline mathjax
 			tex: {
 				inlineMath: [['$', '$'], ['\\(', '\\)']]
 			}
 		};
+		window.MathJax = { // automatic latex numbering equation by default. use classic equation* to avoid numbering
+		  tex: {
+		    tags: 'ams'
+		  }
+		};
 	</script>
-	
+
 </head>
 
 
@@ -41,26 +46,26 @@
 <!-- Menu -->
 <nav id="menu">
 	<ul class="links">
-        
-		    
-		
-		    
-		
-		    
+
+
+
+
+
+
 		        <li><a href="http://localhost:4000//">Home</a></li>
-	    	
-		
-		    
-		
-		
-		    
-		
-		    
+
+
+
+
+
+
+
+
 		        <li><a href="http://localhost:4000/all_posts.html">All posts</a></li>
-		    
-		
-		    
-		
+
+
+
+
 	</ul>
 	<!-- <ul class="actions vertical">
 		<li><a href="#" class="button special fit">Get Started</a></li>
@@ -78,9 +83,9 @@
 	<div class="inner">
 		<header class="major">
 			<h1>404</h1>
-      
+
 		</header>
-		
+
     <p>Page not found! :(</p>
 
 	</div>
@@ -136,11 +141,11 @@
 					<span class="icon alt fa-home"></span>
 					<h3>Address</h3>
 					<span>
-					
-					
-					
-					
-					
+
+
+
+
+
 					</span>
 				</div>
 			</section>
@@ -152,20 +157,20 @@
 	<footer id="footer">
 		<div class="inner">
 			<ul class="icons">
-				
-				
-				
-				
-				
-				
-				
-				
+
+
+
+
+
+
+
+
 				<li><a href="https://github.com/FrancescoTamborra" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-				
-				
-				
+
+
+
 				<li><a href="https://www.linkedin.com/in/francescotamborra/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-				
+
 			</ul>
 			<ul class="copyright">
 				<li>&copy; 101010 by Francesco Tamborra</li>

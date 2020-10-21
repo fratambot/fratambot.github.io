@@ -15,10 +15,15 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 	<script>
-		MathJax = {
+		MathJax = { // use single dollar for inline mathjax
 			tex: {
 				inlineMath: [['$', '$'], ['\\(', '\\)']]
 			}
+		};
+		window.MathJax = { // automatic latex numbering equation by default. use classic equation* to avoid numbering
+		  tex: {
+		    tags: 'ams'
+		  }
 		};
 	</script>
 	
