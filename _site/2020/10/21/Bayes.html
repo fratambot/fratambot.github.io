@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>Home | 101010</title>
+	<title>Bayes' theorem | 101010</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -36,7 +36,7 @@
 <div id="wrapper">
 
 <!-- Header -->
-<header id="header" class="alt">
+<header id="header">
 	<a href="http://localhost:4000//" class="logo"><strong>101010</strong> <span>by Francesco Tamborra</span></a>
 	<nav>
 		<a href="#menu">Menu</a>
@@ -74,68 +74,28 @@
 </nav>
 
 
-    <!-- Banner -->
-    <section id="banner" class="major">
-        <div class="inner">
-            <header class="major">
-                <h1>101010</h1>
-            </header>
-            <div class="content">
-                <p style="text-transform: uppercase;">A kind of blog about data, science, <br /> life, the universe and everything</p>
-                <ul class="actions">
-                    <li><a href="#one" class="button next scrolly">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    <!-- Main -->
-    <div id="main">
+<!-- Main -->
+<div id="main" class="alt">
 
-        <!-- One -->
-        
-<section id="one" class="tiles">
-  
-  <article>
-    <span class="image">
-      <img src="assets/images/post_bayes/Bayes_sign.jpg" alt="" />
-    </span>
-    <header class="major">
-      <h3><a href="/2020/10/21/Bayes.html" class="link">Bayes' theorem</a></h3>
+<!-- One -->
+<section id="one" class="white-post">
+	<div class="inner">
+		<header class="major">
+			<h1>Bayes' theorem</h1>
       <p>21 October 2020</p>
-      <p>The beautiful philosophy behind it</p>
-    </header>
-  </article>
-  
-  <article>
-    <span class="image">
-      <img src="assets/images/post_neurons/neuron_cropped.png" alt="" />
-    </span>
-    <header class="major">
-      <h3><a href="/2020/10/19/Neurons.html" class="link">Artificial Neurons</a></h3>
-      <p>19 October 2020</p>
-      <p>The building blocks of Artificial Neural Networks</p>
-    </header>
-  </article>
-  
+		</header>
+		<span class="image main"><img src="/assets/images/post_bayes/Bayes_sign.jpg" alt="" /></span>
+    <p>I have recently wrote an article on LinkedIn about Bayes’ theorem and the beautiful philosophy behind it.</p>
+
+<p>Since it is publicly available, rather than copying and pasting everything, you can read it directly <strong><a href="https://www.linkedin.com/pulse/beautiful-philosophy-behind-bayes-theorem-francesco-tamborra/">here</a></strong>.</p>
+
+<p>Enjoy !</p>
+
+	</div>
 </section>
 
-
-        <!-- Two -->
-        <!-- <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <h2>Massa libero</h2>
-                </header>
-                <p>
-</p>
-                <ul class="actions">
-                    <li><a href="landing.html" class="button next">Get Started</a></li>
-                </ul>
-            </div>
-        </section> -->
-
-    </div>
+</div>
 
     <!-- Contact -->
 <section id="contact">
@@ -240,3 +200,21 @@
 </body>
 
 </html>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [['$','$'], ['\\(','\\)']],
+processEscapes: true},
+jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+TeX: {
+extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+equationNumbers: {
+autoNumber: "AMS"
+}
+}
+});
+</script>

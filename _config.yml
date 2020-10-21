@@ -2,7 +2,7 @@
 title: 101010
 subtitle: by Francesco Tamborra
 email: francescotamborra AT gmail DOT com
-description: A kind of blog about data, science, society, <br /> life, the universe and everything
+description: A kind of blog about data, science, <br /> life, the universe and everything
 baseurl: #"/forty-jekyll-theme" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author: Francesco Tamborra
